@@ -1,0 +1,2 @@
+class Futsal < ApplicationRecord
+end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Futsals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @futsals.each do |futsal| %>
+      <tr>
+        <td><%= futsal.name %></td>
+        <td><%= futsal.location %></td>
+        <td><%= link_to 'Show', futsal %></td>
+        <td><%= link_to 'Edit', edit_futsal_path(futsal) %></td>
+        <td><%= link_to 'Destroy', futsal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Futsal', new_futsal_path %>
