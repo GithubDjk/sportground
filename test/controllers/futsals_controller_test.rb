@@ -17,7 +17,7 @@ class FutsalsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create futsal" do
     assert_difference('Futsal.count') do
-      post futsals_url, params: { futsal: { location: @futsal.location, name: @futsal.name } }
+      post futsals_url, params: {futsal: {location: @futsal.location, name: @futsal.name}}
     end
 
     assert_redirected_to futsal_url(Futsal.last)
@@ -34,7 +34,7 @@ class FutsalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update futsal" do
-    patch futsal_url(@futsal), params: { futsal: { location: @futsal.location, name: @futsal.name } }
+    patch futsal_url(@futsal), params: {futsal: {location: @futsal.location, name: @futsal.name}}
     assert_redirected_to futsal_url(@futsal)
   end
 
