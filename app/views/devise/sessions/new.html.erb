@@ -1,26 +1,28 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="wrapper fadeInDown mb-0">
+  <div id="formContent">
+    <h2>Log in</h2>
+    <div class="fadeIn first">
+      <img src="https://cdn.dribbble.com/users/2095589/screenshots/4166422/user_1.png" id="icon" alt="User Icon" />
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field col-12">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",id: "login" , class: "fadeIn second form-control", placeholder: "Your Email.." %>
+    </div>
+    <div class="field col-12">
+      <%= f.password_field :password, autocomplete: "current-password", id: "password", class: "fadeIn third form-control", placeholder: "Password.."%>
+    </div>
+    <% if devise_mapping.rememberable? %>
+    <div class="form-group">
+      <div class="custom-control custom-checkbox ml-4">
+        <%= f.check_box :remember_me , class: "custom-control-input col-6"%>
+        <%= f.label :remember_me ,class: "custom-control-label col-6"%> 
+      </div>
+    </div>
+    <% end %>
+    <div class="actions">
+      <%= f.submit "Log in" , class: "fadeIn fourth col-11"%>
+    </div>
+    <% end %>  
+    <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
