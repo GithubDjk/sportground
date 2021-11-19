@@ -18,7 +18,7 @@
         <td><%= futsal.location %></td>
         <td><%= link_to 'Show', futsal %></td>
         <td><%= link_to 'Edit', edit_futsal_path(futsal) %></td>
-        <td><%= link_to 'Destroy', futsal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', futsal, method: :delete, data: { confirm: 'Are you sure you want to delete?' ,  confirmButtonText: "Delete" } %></td>
       </tr>
     <% end %>
   </tbody>
