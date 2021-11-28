@@ -1,27 +1,22 @@
-<div class="wrapper fadeInDown mb-0">
-  <div id="formContent">
-    <h2>Sign up</h2>
-    <div class="fadeIn first">
-      <img src="https://cdn.dribbble.com/users/2095589/screenshots/4166422/user_1.png" id="icon" alt="User Icon" />
-    </div>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="field col-12">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" ,id: "login" , class: "fadeIn second form-control", placeholder: "Your Email.." %> 
-    </div>
-    <div class="field col-12">
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "fadeIn third form-control", placeholder: "Password.." %>
-    </div>
-    <div class="field col-12">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "fadeIn third form-control", placeholder: "Confirm Password.." %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Sign in" , class: "fadeIn fourth col-11"%>
-    </div>
-    <% end %>  
-    <%= render "devise/shared/links" %>
+<div class="col-4 offset-4 justify-content-center text-center">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= image_tag("sportground.png", size: '200x200', alt: "logo") %>
+  <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+  <div class="field">
+  <%= f.email_field :email, autofocus: true, autocomplete: "email" ,id: "login" , class: "fadeIn second form-control", placeholder: "Your Email.." %> 
   </div>
+  <div class="field">
+  <% if @minimum_password_length %>
+  <em>(<%= @minimum_password_length %> characters minimum)</em>
+  <% end %><br />
+  <%= f.password_field :password, autocomplete: "new-password", class: "fadeIn third form-control", placeholder: "Password.." %>
+  </div>
+  <div class="field">
+  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "fadeIn third form-control", placeholder: "Confirm Password.." %>
+  </div>
+  <div class="field">
+    <%= f.submit "Sign Up" , class: "btn btn-lg btn-primary btn-block"%>
+    <%end%>
+    <%= render "devise/shared/links"%>
 </div>
