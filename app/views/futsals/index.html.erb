@@ -14,6 +14,11 @@
   <tbody>
     <% @futsals.each do |futsal| %>
       <tr>
+        <td> 
+          <% if futsal.image.attached? %>
+            <%= image_tag futsal.image , style: "width: 200px; display: block" %>
+          <% end %>
+        </td>
         <td><%= futsal.name %></td>
         <td><%= futsal.location %></td>
         <td><%= link_to 'Show', futsal %></td>
