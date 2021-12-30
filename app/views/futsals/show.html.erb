@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+<% if @futsal.image.attached? %>
+<%= image_tag @futsal.image ,class: "rounded mx-auto d-block", style: "width: 200px;" %>
+<% end %>
+
 <p>
   <strong>Name:</strong>
   <%= @futsal.name %>
@@ -10,5 +15,27 @@
   <%= @futsal.location %>
 </p>
 
+<p>
+  <strong>Owner:</strong>
+  <%= @futsal.owner_name %>
+</p>
+
+<p>
+  <strong>Price per Hour:</strong>
+  <%= @futsal.price_per_hour %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @futsal.capacity %>
+</p>
+
+<p>
+  <strong>Contact Number:</strong>
+  <%= @futsal.contact_no %>
+</p>
+
+
 <%= link_to 'Edit', edit_futsal_path(@futsal) %> |
 <%= link_to 'Back', futsals_path %>
+</div>

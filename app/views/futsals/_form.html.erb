@@ -25,6 +25,26 @@
     <%= form.text_field :location %>
   </div>
 
+  <div class="field">
+    <%= form.label :price_per_hour %>
+    <%= form.number_field :price_per_hour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :owner_name %>
+    <%= form.text_field :owner_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :capacity %>
+    <%= form.number_field :capacity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_no %>
+    <%= form.number_field :contact_no %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
