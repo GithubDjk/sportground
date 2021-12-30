@@ -1,0 +1,50 @@
+<%= form_for :current_user do |form| %>
+  <% if current_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this futsal from being saved:</h2>
+
+      <ul>
+        <% current_user.errors.each do |error| %>
+          <li><%= current_user.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= form.hidden_field :id %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fname %>
+    <%= form.text_field :fname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lname %>
+    <%= form.text_field :lname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+
+    <%= form.label :dob, "DOB"%>
+    <%= form.date_select :dob, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_no %>
+    <%= form.number_field :contact_no %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
