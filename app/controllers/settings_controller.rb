@@ -23,6 +23,6 @@ class SettingsController < ApplicationController
   end
 
   def user_params
-    params.require(:current_user).permit(:id, :email, :fname, :lname, :location, :dob, :contact_no)
+    params.require(:current_user).permit(:id, :email, :image, :fname, :lname, :location, :dob, :contact_no)
   end
 end

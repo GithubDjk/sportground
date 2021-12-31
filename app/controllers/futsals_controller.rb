@@ -64,6 +64,6 @@ class FutsalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def futsal_params
-      params.require(:futsal).permit(:name, :location, :image, :price_per_hour, :owner_name, :capacity, :contact_no)
+      params.require(:futsal).permit(:name, :location, :image, :price_per_hour, :owner_name, :capacity, :contact_no, :bio)
     end
 end
