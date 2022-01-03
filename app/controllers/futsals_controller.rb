@@ -3,7 +3,7 @@ class FutsalsController < ApplicationController
 
   # GET /futsals or /futsals.json
   def index
-    @futsals = Futsal.all
+    @futsals = Futsal.where(approve: true)
   end
 
   # GET /futsals/1 or /futsals/1.json
