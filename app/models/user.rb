@@ -25,4 +25,9 @@ class User < ApplicationRecord
     end
   end
   
+  def full_name
+    return email if fname.blank? || lname.blank?
+
+    "#{fname} #{lname}"
+  end
 end
