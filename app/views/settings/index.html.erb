@@ -1,4 +1,15 @@
-<%= form_for :current_user do |form| %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#Profile">Profile Information</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#changePassword">Change Password</a>
+  </li>
+</ul>
+
+<div class="tab-content py-4">
+  <div id="Profile" class="tab-pane fade in active show">
+ <%= form_for :current_user do |form| %>
   <% if current_user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this futsal from being saved:</h2>
@@ -55,3 +66,9 @@
     <%= form.submit %>
   </div>
 <% end %>
+  </div>
+
+  <div id="changePassword" class="tab-pane fade">
+        <%= link_to 'Change Password', edit_user_registration_path, :class => 'btn btn-success center text-white' %>
+  </div>
+</div>
