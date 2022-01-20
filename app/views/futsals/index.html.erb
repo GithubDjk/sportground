@@ -1,31 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Futsals</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @futsals.each do |futsal| %>
-      <tr>
-        <td> 
-          <% if futsal.image.attached? %>
-            <%= image_tag futsal.image , style: "width: 200px; display: block" %>
-          <% end %>
-        </td>
-        <td><%= futsal.name %></td>
-        <td><%= futsal.location %></td>
-        <td><%= link_to 'Show', futsal %></td>
-        <td><%= link_to 'Edit', edit_futsal_path(futsal) %></td>
-        <td><%= link_to 'Destroy', futsal, method: :delete, data: { confirm: 'Are you sure you want to delete?' ,  confirmButtonText: "Delete" } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="row m-10">
+<% @futsals.each do |futsal| %>
+<div class="col-sm-4">
+<div class="card-group h-100">
+  <div class="card">
+  <% if futsal.image.attached? %>
+   <%= image_tag futsal.image , class: "card-img-top",style: "height: 160px; width: 400px", alt: "No Image"%>
+  <% end %>
+    <div class="card-body p-1">
+      <h5 class="card-title"><%= futsal.name.capitalize %></h5>
+      <h6 class="card-title"><%= futsal.location.capitalize %></h6>
+      <p class="card-text"><%= futsal.bio? ? truncate(futsal.bio).capitalize : "Our Informations..." %></p>
+      <div class="card-footer">
+        <% if current_user.fname == futsal.owner_name %>
+        <%= link_to 'Show', futsal,class: "text-dark btn btn-lg" %> | <%= link_to 'Edit', edit_futsal_path(futsal),class: "text-primary btn btn-lg " %> | <%= link_to 'Destroy', futsal, method: :delete, data: { confirm: 'Are you sure you want to delete?' ,  confirmButtonText: "Delete" },class: "btn btn-lg text-danger" %>
+        <% else %>
+        <%= link_to 'View More', futsal, class: "btn btn-lg btn-secondary text-white px-4 mx-2" %> 
+        <%= link_to 'Book Now', futsal, class: "btn btn-lg btn-primary text-white px-4" %> 
+        <% end %>
+      </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
+  <% end %>
+</div>
