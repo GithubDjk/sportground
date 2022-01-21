@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(version: 2022_01_03_151020) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "images"
+    t.string "image"
     t.float "price_per_hour"
     t.string "owner_name"
     t.integer "capacity"
     t.bigint "contact_no"
     t.string "bio"
-    t.boolean "approve"
+    t.boolean "approve", default: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,6 +63,10 @@ ActiveRecord::Schema.define(version: 2022_01_03_151020) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "role"

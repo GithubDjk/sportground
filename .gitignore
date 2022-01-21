@@ -37,3 +37,6 @@ yarn-debug.log*
 GithubDjk
 GithubDjk.pub
 .vscode/settings.json
+
+# Ignore application configuration
+/config/application.yml
