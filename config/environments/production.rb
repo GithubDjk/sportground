@@ -98,7 +98,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
     #devise_confirmable_production
-    config.action_mailer.default_url_options = { host => 'https://protected-shore-80321.herokuapp.com' }
+    # config.action_mailer.default_url_options = { host => 'https://protected-shore-80321.herokuapp.com' }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       user_name:      ENV['GMAIL_PASSWORD'],
