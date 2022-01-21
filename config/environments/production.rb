@@ -101,8 +101,8 @@ Rails.application.configure do
 
     config.action_mailer.default_url_options = { :host => 'https://protected-shore-80321.herokuapp.com' }
     config.action_mailer.smtp_settings = {
-      user_name:      ENV['GMAIL_PASSWORD'],
-      password:       ENV['GMAIL_USERNAME'],
+      user_name:      'karkidipen59@gmail.com',
+      password:       'Djk12345me',
       domain:         'gmail.com',
       address:       'smtp.gmail.com',
       port:          '587',
