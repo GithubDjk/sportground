@@ -12,22 +12,10 @@ Rails.application.configure do
   config.eager_load = false
 
   #letter_opener
+  config.action_mailer.default_url_options = {host: 'localhost', port: 3000}
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
  
-  # devise setup
-  config.action_mailer.default_url_options = {host: 'localhost', port: 3000}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    user_name:      ENV['GMAIL_PASSWORD'],
-    password:       ENV['GMAIL_USERNAME'],
-    domain:         'example.com',
-    address:       'smtp.gmail.com',
-    port:          '587',
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
-
   # Show full error reports.
   config.consider_all_requests_local = true
 
