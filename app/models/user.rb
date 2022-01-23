@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one_attached :image
+  has_many :futsals
 
   rails_admin do
     edit do
