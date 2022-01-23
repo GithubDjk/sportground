@@ -17,7 +17,7 @@ class User < ApplicationRecord
       field :location
       field :dob
       field :contact_no
-      field :image
+      field :image, :multiple_active_storage
       field :role , :enum do
         enum do
           [['admin','admin'], ['user', 'user'], ['owner','owner']]

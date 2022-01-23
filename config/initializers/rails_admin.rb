@@ -2,11 +2,11 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
 
-  # ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  ## == Devise ==
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+  config.current_user_method(&:current_user)
 
 
   ## == CancanCan ==
@@ -27,8 +27,22 @@ RailsAdmin.config do |config|
     current_user.role == "admin"
   end
 
-  config.authenticate_with do
-    redirect_to main_app.root_path unless current_user.role == "admin"
+  config.model 'Futsal' do
+    edit do
+      field :name
+      field :location
+      field :price_per_hour 
+      field :owner_name 
+      field :capacity 
+      field :contact_no 
+      field :bio 
+      field :approve 
+      field :user_id
+      field :image, :multiple_active_storage
+    end
+    list do
+      configure :image
+    end
   end
 
   config.actions do
