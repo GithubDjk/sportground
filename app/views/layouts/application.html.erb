@@ -17,25 +17,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag "application", media: "all", 'data-turbolinks-track': "reload" %> 
   </head>
 
   <body>
+  <%= custom_bootstrap_flash %>
     <% if user_signed_in? %>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="<%= root_path %>"><%= image_tag("sportground.png", size: '100x50', alt: "logo") %></a>
+      <a class="navbar-brand" href="<%= root_path %>"><%= image_tag("logo_transparent.png", size: '120x45', alt: "logo") %></a>
     
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <!-- <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li> -->
-          <li class="nav-item pt-2">
-            <%= link_to 'Home', root_path, :class => 'navbar-link text-white' %>
-          </li>
-        
+         
         </ul>
         Logged in as &nbsp; <strong> <%= current_user.full_name %> </strong>.
         <%= link_to 'Settings', settings_path, :class => 'navbar-link px-3' %>

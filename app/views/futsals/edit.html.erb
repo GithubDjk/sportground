@@ -1,6 +1,8 @@
-<h1>Editing Futsal</h1>
-
-<%= render 'form', futsal: @futsal %>
-
-<%= link_to 'Show', @futsal %> |
-<%= link_to 'Back', futsals_path %>
+<div class="container">
+  <h1 class="well text-center">Edit Futsal Form</h1>
+  <div class="col-lg-12 well">
+    <div class="row d-flex justify-content-center">
+      <%= render 'form', futsal: @futsal, new: false %>
+    </div>
+  </div>
+</div>

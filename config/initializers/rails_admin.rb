@@ -2,11 +2,11 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
 
-  # ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  ## == Devise ==
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+  config.current_user_method(&:current_user)
 
 
   ## == CancanCan ==
@@ -23,12 +23,30 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
-  def super_admin?
-    current_user.role == "admin"
-  end
 
-  config.authenticate_with do
-    redirect_to main_app.root_path unless current_user.role == "admin"
+  config.model 'Futsal' do
+    edit do
+      include_fields :name,
+                     :location,
+                     :price_per_hour,
+                     :owner_name,
+                     :capacity,
+                     :contact_no,
+                     :bio,
+                     :approve,
+                     :user_id
+    end
+    list do
+      include_fields :name,
+                     :location,
+                     :price_per_hour,
+                     :owner_name,
+                     :capacity,
+                     :contact_no,
+                     :bio,
+                     :approve,
+                     :user_id
+    end
   end
 
   config.actions do

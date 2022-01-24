@@ -17,7 +17,7 @@ class User < ApplicationRecord
       field :location
       field :dob
       field :contact_no
-      field :image
+      field :image, :multiple_active_storage
       field :role , :enum do
         enum do
           [['admin','admin'], ['user', 'user'], ['owner','owner']]
@@ -30,5 +30,9 @@ class User < ApplicationRecord
     return email if fname.blank? || lname.blank?
 
     "#{fname} #{lname}"
+  end
+
+  def admin?
+    role == "admin"
   end
 end

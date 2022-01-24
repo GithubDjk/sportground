@@ -1,56 +1,33 @@
 <%= form_with(model: futsal) do |form| %>
-  <% if futsal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(futsal.errors.count, "error") %> prohibited this futsal from being saved:</h2>
-
-      <ul>
-        <% futsal.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="form-group">
+    <%= form.text_field :name, autofocus: true , class: "fadeIn second form-control", placeholder: "Name of Futsal" %>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <%= form.number_field :contact_no, autofocus: true , class: "fadeIn second form-control", placeholder: "98XXXXXXXXXX" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.file_field :image%>
+    <div class="col-sm-6 form-group">
+      <%= form.file_field :image, class: 'btn btn-primary-outline'%>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <%= form.text_field :owner_name, autofocus: true , class: "fadeIn second form-control", placeholder: "Futsal Owner's Name"%>
+    </div>
+    <div class="col-sm-6 form-group">
+      <%= form.text_field :location, autofocus: true , class: "fadeIn second form-control", placeholder: "Location" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <%= form.number_field :price_per_hour, autofocus: true , class: "fadeIn second form-control", placeholder: "Price Per Hour per person"  %>
+    </div>
+    <div class="col-sm-6 form-group">
+      <%= form.number_field :capacity, autofocus: true , class: "fadeIn second form-control", placeholder: "No of Players Capacity"  %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :price_per_hour %>
-    <%= form.number_field :price_per_hour %>
+  <div class="form-group">
+    <%= form.text_area :bio, autofocus: true , class: "fadeIn second form-control", placeholder: "Description About the Futsal" %>
   </div>
-
-  <div class="field">
-    <%= form.label :owner_name %>
-    <%= form.text_field :owner_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :capacity %>
-    <%= form.number_field :capacity %>
-  </div>
-
-  <div class="field">
-    <%= form.label :contact_no %>
-    <%= form.number_field :contact_no %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bio %>
-    <%= form.text_area :bio %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit "#{new ? 'Register' : 'Update Futsal'}", :class => 'btn btn-lg col-12 btn-primary' %>
 <% end %>
