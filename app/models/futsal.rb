@@ -1,5 +1,6 @@
 class Futsal < ApplicationRecord
-  after_update :send_approved_mail
+  before_update :send_approved_mail, :if => :approve_changed?
+
   validates :name, presence: true
   has_one_attached :image
   belongs_to :user

@@ -29,19 +29,26 @@ RailsAdmin.config do |config|
 
   config.model 'Futsal' do
     edit do
-      field :name
-      field :location
-      field :price_per_hour 
-      field :owner_name 
-      field :capacity 
-      field :contact_no 
-      field :bio 
-      field :approve 
-      field :user_id
-      field :image, :multiple_active_storage
+      include_fields :name,
+                     :location,
+                     :price_per_hour,
+                     :owner_name,
+                     :capacity,
+                     :contact_no,
+                     :bio,
+                     :approve,
+                     :user_id
     end
     list do
-      configure :image
+      include_fields :name,
+                     :location,
+                     :price_per_hour,
+                     :owner_name,
+                     :capacity,
+                     :contact_no,
+                     :bio,
+                     :approve,
+                     :user_id
     end
   end
 

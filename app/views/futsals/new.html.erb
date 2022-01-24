@@ -1,1 +1,8 @@
-<%= render 'form', futsal: @futsal %>
+<div class="container">
+  <h1 class="well text-center">New Futsal Registration Form</h1>
+  <div class="col-lg-12 well">
+    <div class="row d-flex justify-content-center">
+      <%= render 'form', futsal: @futsal, :new => true %>
+    </div>
+  </div>
+</div>

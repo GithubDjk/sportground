@@ -1,19 +1,14 @@
-
-<div class="container">
-    <h1 class="well text-center">New Futsal Registration Form</h1>
-	<div class="col-lg-12 well">
-	<div class="row d-flex justify-content-center">
 <%= form_with(model: futsal) do |form| %>
   <div class="form-group">
     <%= form.text_field :name, autofocus: true , class: "fadeIn second form-control", placeholder: "Name of Futsal" %>
   </div>
   <div class="row">
-   <div class="col-sm-6 form-group">
-    <%= form.number_field :contact_no, autofocus: true , class: "fadeIn second form-control", placeholder: "98XXXXXXXXXX" %>
-  </div>
-   <div class="col-sm-6 form-group">
-    <%= form.file_field :image, class: 'btn btn-primary-outline'%>
-  </div>
+    <div class="col-sm-6 form-group">
+      <%= form.number_field :contact_no, autofocus: true , class: "fadeIn second form-control", placeholder: "98XXXXXXXXXX" %>
+    </div>
+    <div class="col-sm-6 form-group">
+      <%= form.file_field :image, class: 'btn btn-primary-outline'%>
+    </div>
   </div>
   <div class="row">
     <div class="col-sm-6 form-group">
@@ -34,8 +29,5 @@
   <div class="form-group">
     <%= form.text_area :bio, autofocus: true , class: "fadeIn second form-control", placeholder: "Description About the Futsal" %>
   </div>
-  <%= form.submit 'Register', :class => 'btn btn-lg col-12 btn-primary' %>
+  <%= form.submit "#{new ? 'Register' : 'Update Futsal'}", :class => 'btn btn-lg col-12 btn-primary' %>
 <% end %>
-</div>
-</div>
-</div>
