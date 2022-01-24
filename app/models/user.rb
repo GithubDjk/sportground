@@ -31,4 +31,8 @@ class User < ApplicationRecord
 
     "#{fname} #{lname}"
   end
+
+  def admin?
+    role == "admin"
+  end
 end

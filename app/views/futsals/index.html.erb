@@ -1,18 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Futsals</h1>
-<div class="row m-10">
+<h1>Most Popular</h1>
+<div class="row">
 <% @futsals.each do |futsal| %>
-<div class="col-sm-4">
+<div class="col-sm-4 my-2">
 <div class="card-group h-100">
   <div class="card">
-  <% if futsal.image.attached? %>
-   <%= image_tag futsal.image , class: "card-img-top",style: "height: 160px; width: 400px", alt: "No Image"%>
-  <% end %>
+   <%= image_tag futsal.profile_picture_url , class: "card-img-top",style: "object-fit: cover; height: 180px;", alt: "No Image"%>
     <div class="card-body p-1">
       <h5 class="card-title"><%= futsal.name.capitalize %></h5>
       <h6 class="card-title"><%= futsal.location.capitalize %></h6>
-      <p class="card-text"><%= futsal.bio? ? truncate(futsal.bio).capitalize : "Our Informations..." %></p>
+      <p class="card-text">Rs. <%= futsal.price_per_hour %></p>
       <div class="card-footer">
         <% if current_user.fname == futsal.owner_name %>
         <%= link_to 'Show', futsal,class: "text-dark btn btn-lg" %> | <%= link_to 'Edit', edit_futsal_path(futsal),class: "text-primary btn btn-lg " %> | <%= link_to 'Destroy', futsal, method: :delete, data: { confirm: 'Are you sure you want to delete?' ,  confirmButtonText: "Delete" },class: "btn btn-lg text-danger" %>

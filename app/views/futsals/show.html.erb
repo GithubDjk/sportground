@@ -1,45 +1,42 @@
-<p id="notice"><%= notice %></p>
-
-<div class="container">
-<% if @futsal.image.attached? %>
-<%= image_tag @futsal.image ,class: "rounded mx-auto d-block", style: "width: 200px;" %>
-<% end %>
-
-<p>
-  <strong>Name:</strong>
-  <%= @futsal.name %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @futsal.location %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @futsal.owner_name %>
-</p>
-
-<p>
-  <strong>Price per Hour:</strong>
-  <%= @futsal.price_per_hour %>
-</p>
-
-<p>
-  <strong>Capacity:</strong>
-  <%= @futsal.capacity %>
-</p>
-
-<p>
-  <strong>Contact Number:</strong>
-  <%= @futsal.contact_no %>
-</p>
-
-<p>
-  <strong>About Futsal:</strong>
-  <%= @futsal.bio %>
-</p>
-
-<%= link_to 'Edit', edit_futsal_path(@futsal) %> |
-<%= link_to 'Back', futsals_path %>
+<div class="jumbotron p-3 p-md-5 text-white rounded" id="futsal-background">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 font-italic"> <%= @futsal.name.capitalize %></h1>
+  </div>
 </div>
+<div class="row mb-2">
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <h3 class="mb-0"> About Futsal </h3>
+        <p class="card-text mb-auto"><%= @futsal.bio.capitalize %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <h3 class="mb-0"> General Info: </h3>
+        <ul class="list-group w-100 mt-3">
+          <li class="list-group-item">    <strong>Location:</strong> <%= @futsal.location %></li>
+          <li class="list-group-item">    <strong>Owner:</strong>
+            <%= @futsal.owner_name %></li>
+          <li class="list-group-item">    <strong>Price per Hour:</strong>
+            Rs.<%= @futsal.price_per_hour %></li>
+          <li class="list-group-item">    <strong>Capacity:</strong>
+            <%= @futsal.capacity %></li>
+          <li class="list-group-item">    <strong>Contact Number:</strong>
+            <%= @futsal.contact_no %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+#futsal-background{
+   background-image: url(<%= url_for(@futsal.profile_picture_url) %>);
+   background-size: cover;
+  height: 50vh;
+}
+</style>
