@@ -1,15 +1,9 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#Profile">Profile Information</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#changePassword">Change Password</a>
-  </li>
-</ul>
-
-<div class="tab-content py-4">
-  <div id="Profile" class="tab-pane fade in active show">
- <%= form_for :current_user do |form| %>
+<div class="container">
+  <h1 class="well text-center">My Profile</h1>
+  <div class="col-lg-12 well">
+    <div class="row d-flex justify-content-center">
+      
+<%= form_for :current_user, class: 'text-center' do |form| %>
   <% if current_user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this futsal from being saved:</h2>
@@ -21,54 +15,44 @@
       </ul>
     </div>
   <% end %>
-  
+
   <%= form.hidden_field :id %>
   
+  <div class="col-sm-6 form-group">
   <% if current_user.image.attached? %>
-    <%= image_tag current_user.image , style: "width: 200px; display: block" %>
+    <%= image_tag current_user.image , class: "avatar-img rounded-circle", style: "width: 200px; display: block" %>
   <% end %>
-  <div class="field">
-    <%= form.file_field :image%>
+    <%= form.file_field :image, class: 'btn btn-primary-outline'%>
+  </div>
+  <div class="form-group">
+    <%= form.text_field :email, autofocus: true , class: "fadeIn second form-control", placeholder: "Email Address" %>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+    <%= form.text_field :fname, autofocus: true , class: "fadeIn second form-control", placeholder: "First Name" %>
+    </div>
+    <div class="col-sm-6 form-group">
+      <%= form.text_field :lname, autofocus: true , class: "fadeIn second form-control", placeholder: "Last Name" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <%= form.text_field :location, autofocus: true , class: "fadeIn second form-control", placeholder: "Your Location" %>
+    </div>
+    <div class="col-sm-6 form-group">
+      <%= form.number_field :contact_no, autofocus: true , class: "fadeIn second form-control", placeholder: "98XXXXXXXXXX" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :fname %>
-    <%= form.text_field :fname %>
+  
+  <div class="form-group">
+    <%= form.label :dob, "Date Of Birth"%>
+    <%= form.date_select :dob, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today}, class: 'form-control d-inline col-2' %>
   </div>
-
-  <div class="field">
-    <%= form.label :lname %>
-    <%= form.text_field :lname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div class="field">
-
-    <%= form.label :dob, "DOB"%>
-    <%= form.date_select :dob, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :contact_no %>
-    <%= form.number_field :contact_no %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= form.submit "Update User Profile", :class => 'btn btn-lg col-12 btn-primary' %>
 <% end %>
-  </div>
 
-  <div id="changePassword" class="tab-pane fade">
-        <%= link_to 'Change Password', edit_user_registration_path, :class => 'btn btn-success center text-white' %>
+
+    </div>
   </div>
 </div>

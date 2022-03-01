@@ -17,7 +17,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag "application", media: "all", 'data-turbolinks-track': "reload" %> 
+    <%= stylesheet_pack_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
+
+<style>
+  .dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+  </style>
   </head>
 
   <body>
@@ -36,9 +48,18 @@
           </li> -->
          
         </ul>
-        Logged in as &nbsp; <strong> <%= current_user.full_name %> </strong>.
-        <%= link_to 'Settings', settings_path, :class => 'navbar-link px-3' %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-danger mx-2 text-white'  %>
+        <div class="dropdown">
+          <div class="row">
+          <% if current_user.image.attached? %>
+          <%= image_tag current_user.image, class: "avatar-img rounded-circle dropdown-toggle m-3 px-2", id: "dropdownMenuButton", data: {toggle: "dropdown"},style: "height: 50px;"%>
+          <% end %>
+        </div>
+        <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton">
+          <span class="list-group-item"> <%= current_user.full_name %> </span>
+            <%= link_to 'Profile Settings', settings_path, :class => 'dropdown-item navbar-link list-group-item' %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item text-danger list-group-item'  %>
+          </div>
+        </div>
         <%= link_to 'Register Futsal', new_futsal_path , method: :get, :class => 'btn btn-success text-white' %>
         <% end %>
       </div>
