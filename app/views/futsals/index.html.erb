@@ -14,7 +14,10 @@
         <%= link_to 'Show', futsal,class: "text-dark btn btn-lg" %> | <%= link_to 'Edit', edit_futsal_path(futsal),class: "text-primary btn btn-lg " %> | <%= link_to 'Destroy', futsal, method: :delete, data: { confirm: 'Are you sure you want to delete?' ,  confirmButtonText: "Delete" },class: "btn btn-lg text-danger" %>
         <% else %>
         <%= link_to 'View More', futsal, class: "btn btn-lg btn-secondary text-white mt-2" %> 
-        <%= link_to 'Book Now', futsal, class: "btn btn-lg btn-primary text-white mt-2" %> 
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-lg btn-primary text-white mt-2" data-toggle="modal" data-target="#exampleModalCenter">
+          Book Now
+        </button>
         <% end %>
       </div>
   
@@ -24,3 +27,4 @@
   </div>
   <% end %>
 </div>
+<%= render "modal/modal_book"%>
