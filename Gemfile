@@ -34,6 +34,12 @@ gem 'devise'
 
 gem 'rails_admin', '~> 2.0'
 
+gem 'font_awesome5_rails'
+
+gem 'bootstrap',  '~>4.3.1'
+
+gem 'jquery-rails'
+
 gem 'image_processing' , '~>1.2'
 
 group :development, :test do

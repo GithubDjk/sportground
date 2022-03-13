@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_action :set_user, only: %i[ create ]
+  before_action :set_user, only: %i[create]
   def index
     user = current_user
   end
