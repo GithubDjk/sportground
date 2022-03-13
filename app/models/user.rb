@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :image
   has_many :futsals
+  has_many :bookings
 
   rails_admin do
     edit do

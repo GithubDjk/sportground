@@ -5,11 +5,10 @@ class Futsal < ApplicationRecord
   validates :name, presence: true
   has_one_attached :image
   belongs_to :user
-  
+  has_many :bookings
+
   def send_approved_mail
-    if approve
-      FutsalApproveMailer.send_approved_mail(user).deliver
-    end
+    FutsalApproveMailer.send_approved_mail(user).deliver if approve
   end
 
   def profile_picture_url
@@ -17,5 +16,4 @@ class Futsal < ApplicationRecord
 
     ActionController::Base.helpers.asset_path('cover_futsal.jpg')
   end
-
 end
