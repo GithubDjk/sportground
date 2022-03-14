@@ -79,7 +79,7 @@
         <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton">
           <span class="list-group-item"> <%= current_user.full_name %> </span>
           <%= link_to 'Profile Settings', settings_path, :class => 'dropdown-item navbar-link list-group-item' %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item text-danger list-group-item'  %>
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item text-danger list-group-item'  %>
         </div>
       </div>
       <%= link_to 'Register Futsal', new_futsal_path , method: :get, :class => 'btn btn-success text-white' %>
