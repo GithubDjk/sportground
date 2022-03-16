@@ -9,7 +9,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body p-1">
         <%= form_with(url: :booking_index , method: :post) do |f| %>
         <%= f.hidden_field :futsal_id %>
 
@@ -17,7 +17,13 @@
           <%= f.number_field :number_of_players, autofocus: true , class: "form-control p-2", placeholder: "No of Players"  %>
         </div>
         <div class="input-group date p-2" id="datetimepicker1" data-target-input="nearest">
-
+          <span class="p-1">Starts at : </span>
+          <%= f.datetime_field :starts_at, class: "form-control datetimepicker-input", data: {target: "#datatimepicker2"} %>
+          <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+          </div>
+        </div>
+        <div class="input-group date p-2" id="datetimepicker1" data-target-input="nearest">
+          <span class="p-1">Ends at: </span>
           <%= f.datetime_field :ends_at, class: "form-control datetimepicker-input", data: {target: "#datatimepicker1"} %>
           <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
           </div>

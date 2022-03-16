@@ -45,6 +45,6 @@ class BookingController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def booking_params
-    params.permit(:id, :futsal_id, :payment_id, :ends_at, :number_of_players).merge(user_id: current_user.id)
+    params.permit(:id, :futsal_id, :payment_id, :starts_at, :ends_at, :number_of_players).merge(user_id: current_user.id)
   end
 end
