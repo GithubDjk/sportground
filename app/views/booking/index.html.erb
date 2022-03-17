@@ -1,1 +1,28 @@
-<%= @bookings.as_json%>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name of Futsal</th>
+      <th scope="col">Payment</th>
+      <th scope="col">No. of Players</th>
+      <th scope="col">Booked from</th>
+      <th scope="col">Booked to</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%if @bookings.empty? %>
+    <tr><p> No Bookings Made</p><tr>
+    <%else%>
+    <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking&.futsal&.name&.titleize %></td>
+      <td>Not Paid</td>
+      <td><%= booking.number_of_players%></td>
+      <td><%= booking.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%></td>
+      <td><%= booking.ends_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%></td>
+      <td>  <%= button_to "Cancel Booking", booking, method: :delete, data: { confirm: "Are you sure?"},  class: "btn btn-danger text-white mt-2" %></td>
+    </tr>
+    <%end%>
+    <%end%>
+  </tbody>
+</table>
