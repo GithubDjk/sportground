@@ -1,6 +1,11 @@
 class BookingController < ApplicationController
   before_action :booking_params
   before_action :fetch_booking, only: %i[update destroy]
+  
+  def index
+    @bookings = Booking.where(user_id: current_user)
+  end
+
   def create
     booking = Booking.new(booking_params)
 
@@ -10,7 +15,8 @@ class BookingController < ApplicationController
         format.html { redirect_to futsals_path }
         format.json { render :show, status: :created, location: @futsal }
       else
-        format.html { redirect_to futsals_path, error: "Something went Wrong" }
+        flash[:error] = "Something went Wrong"
+        format.html { redirect_to futsals_path }
       end
     end
   end
@@ -18,7 +24,8 @@ class BookingController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to futsals_path, notice: "Booking was successfully updated." }
+        flash[:success] = "Booking was successfully updated." 
+        format.html { redirect_to futsals_path }
         format.json { render :show, status: :ok, location: @booking }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -45,6 +52,6 @@ class BookingController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def booking_params
-    params.permit(:id, :futsal_id, :payment_id, :ends_at, :number_of_players).merge(user_id: current_user.id)
+    params.permit(:id, :futsal_id, :payment_id, :starts_at, :ends_at, :number_of_players).merge(user_id: current_user.id)
   end
 end
