@@ -5,8 +5,6 @@
 import Swal from 'sweetalert2/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 window.Swal = Swal;
-//= require jquery
-//= require jquery_ujs
 import "../stylesheets/application"
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
