@@ -34,11 +34,11 @@ gem 'devise'
 
 gem 'rails_admin', '~> 2.0'
 
-gem 'font_awesome5_rails'
+# gem 'font_awesome5_rails'
 
-gem 'bootstrap'
+# gem 'bootstrap'
 
-gem 'jquery-rails'
+# gem 'jquery-rails'
 
 gem 'image_processing' , '~>1.2'
 
