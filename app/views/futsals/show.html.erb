@@ -45,6 +45,16 @@
 
 <%= render "modal/modal_book"%>
 
+<h3>Booked Table: <h3>
+<div class="row mb-2">
+          <ul class="list-group">
+            <% @bookings.each do |booking| %>
+            <li class="col col-12 list-group-item">
+              <%= booking.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%> To
+              <%= booking.ends_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%> </li>
+            <%end%>
+          </ul>
+</div>
 <style>
   #futsal-background {
     background-image: url(<%= url_for(@futsal.profile_picture_url) %>);

@@ -8,6 +8,7 @@ class FutsalsController < ApplicationController
 
   # GET /futsals/1 or /futsals/1.json
   def show
+    @bookings = Booking.where(futsal_id: @futsal)
   end
 
   # GET /futsals/new
