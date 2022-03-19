@@ -81,11 +81,13 @@
         <div class="row">
           <% if current_user.image.attached? %>
           <%= image_tag current_user.image, class: "avatar-img rounded-circle dropdown-toggle m-3 px-2", id: "dropdownMenuButton", data: {toggle: "dropdown"},style: "height: 50px;"%>
+          <%else%>
+            <%= image_tag "dipendra.jpg", class: "avatar-img rounded-circle dropdown-toggle m-3 px-2", id: "dropdownMenuButton", data: {toggle: "dropdown"},style: "height: 50px;"%>
           <% end %>
         </div>
         <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton">
-          <span class="list-group-item"> <%= current_user.fname %> </span>
-          <%= link_to 'Profile Settings', settings_path, :class => 'dropdown-item navbar-link list-group-item' %>
+          <span class="list-group-item"> <%= current_user.fname? ? current_user.fname : 'User Name' %> </span>
+          <%= link_to 'Profil, class: "rounded-circle", alt: "#{current_user.fname}", width: "140", height: "140"e Settings', settings_path, :class => 'dropdown-item navbar-link list-group-item' %>
           <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item text-danger list-group-item'  %>
         </div>
       </div>
