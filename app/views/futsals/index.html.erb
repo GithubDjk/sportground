@@ -1,4 +1,19 @@
+<div class="row sticky-top bg-light">
+<div class="col col-3">
 <h1>Most Popular</h1>
+</div>
+<div class="col col-3 p-2">
+  <%= form_with(url: :futsals , method: :get, class: "form-inline my-2 my-lg-0") do |f| %>
+  <!-- <form class="form-inline my-2 my-lg-0"> -->
+    <%= f.text_field :location, class: "form-control mr-sm-2", placeholder: "Search by Location" %>
+    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search by Location"> -->
+    <%= f.submit "Search", class: "btn btn-outline-success my-2 my-sm-0"%>
+    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+  <!-- </form> -->
+  <% end %>
+</div>
+<hr class="featurette-divider">
+</div>
 <div class="row">
   <% @futsals.each do |futsal| %>
   <div class="col-sm-4 my-2">

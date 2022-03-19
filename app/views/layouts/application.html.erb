@@ -72,25 +72,21 @@
           <%= link_to 'About Us', contact_index_path, :class => 'navbar-link p-3 text-white' %>
         </li>
       </ul>
-      <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <%= link_to 'Register Futsal', new_futsal_path , method: :get, :class => 'btn btn-success text-white ml-2' %>
       <div class="dropdown">
         <div class="row">
           <% if current_user.image.attached? %>
           <%= image_tag current_user.image, class: "avatar-img rounded-circle dropdown-toggle m-3 px-2", id: "dropdownMenuButton", data: {toggle: "dropdown"},style: "height: 50px;"%>
           <%else%>
-            <%= image_tag "dipendra.jpg", class: "avatar-img rounded-circle dropdown-toggle m-3 px-2", id: "dropdownMenuButton", data: {toggle: "dropdown"},style: "height: 50px;"%>
+          <%= image_tag "dipendra.jpg", class: "avatar-img rounded-circle dropdown-toggle m-3 px-2", id: "dropdownMenuButton", data: {toggle: "dropdown"},style: "height: 50px;"%>
           <% end %>
         </div>
         <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton">
           <span class="list-group-item"> <%= current_user.fname? ? current_user.fname : 'User Name' %> </span>
-          <%= link_to 'Profil, class: "rounded-circle", alt: "#{current_user.fname}", width: "140", height: "140"e Settings', settings_path, :class => 'dropdown-item navbar-link list-group-item' %>
+          <%= link_to 'Profile Settings', settings_path, :class => 'dropdown-item navbar-link list-group-item' %>
           <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item text-danger list-group-item'  %>
         </div>
       </div>
+      <%= link_to 'Register Futsal', new_futsal_path , method: :get, :class => 'btn btn-success text-white ml-2' %>
       <% end %>
     </div>
   </nav>
