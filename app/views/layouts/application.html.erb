@@ -75,12 +75,12 @@
       <div class="dropdown">
         <div class="row">
           <% if current_user.image.attached? %>
-          <%= image_tag current_user.image, class: "avatar-img rounded-circle dropdown-toggle m-3 px-2", id: "dropdownMenuButton", data: {toggle: "dropdown"},style: "height: 50px;"%>
+          <%= image_tag current_user.image, class: "rounded-circle dropdown-toggle m-3 b-1", id: "dropdownMenuButton", data: {toggle: "dropdown"}, width: "40", height: "40"%>
           <%else%>
-          <%= image_tag "dipendra.jpg", class: "avatar-img rounded-circle dropdown-toggle m-3 px-2", id: "dropdownMenuButton", data: {toggle: "dropdown"},style: "height: 50px;"%>
+          <%= image_tag "dipendra.jpg", class: "rounded-circle dropdown-toggle m-3 b-1", id: "dropdownMenuButton", data: {toggle: "dropdown"}, width: "40", height: "40"%>
           <% end %>
         </div>
-        <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton" style = "z-index: 2000 !important;">
           <span class="list-group-item"> <%= current_user.fname.present? ? current_user.fname : 'User Name' %> </span>
           <%= link_to 'Profile Settings', settings_path, :class => 'dropdown-item navbar-link list-group-item' %>
           <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item text-danger list-group-item'  %>
