@@ -34,6 +34,8 @@ gem 'devise'
 
 gem 'rails_admin', '~> 2.0'
 
+gem 'cloudinary'
+
 # gem 'font_awesome5_rails'
 
 # gem 'bootstrap'
