@@ -33,9 +33,9 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_pack_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
-  
-
-  <style>
+  <%= javascript_include_tag 'https://checkout.stripe.com/checkout.js' %>
+ 
+ <style>
     .dropdown:hover>.dropdown-menu {
       display: block;
     }

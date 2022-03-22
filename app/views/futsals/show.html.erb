@@ -24,7 +24,28 @@
             <button type="button" class="btn btn-sm btn-primary text-white mt-2" data-toggle="modal" data-target="#exampleModalCenter">
               Book Now
             </button>
-          </div>
+            <%= form_tag create_payment_method_path do |f| %>
+            <%= hidden_field_tag :futsal_id, value: "#{@futsal.id}"%>
+              <article>
+                <% if flash[:error].present? %>
+                <div id="error_explanation">
+                  <p><%= flash[:error] %></p>
+                </div>
+                <% end %>
+                <label class="amount">
+
+                </label>
+              </article>
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    Stripe.setPublishableKey('PUBLISHABLE_KEY');
+                    data-key="<%= ENV['stripe_publishable_key'] %>"
+                    data-description="A month's subscription"
+                    data-amount="100"
+                    data-locale="auto">
+              </script>
+
+<% end %>
+            </div>
         </div>
         <ul class="list-group w-100 mt-3">
           <li class="list-group-item"> <strong>Location:</strong> <%= @futsal.location %></li>

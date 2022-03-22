@@ -34,6 +34,9 @@ gem 'devise'
 
 gem 'rails_admin', '~> 2.0'
 
+gem 'stripe-rails'
+gem "money-rails"
+
 gem 'cloudinary'
 
 # gem 'font_awesome5_rails'

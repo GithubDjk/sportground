@@ -81,4 +81,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.active_storage.service = :cloudinary
 
+  config.stripe.secret_key = ENV['stripe_api_key']
+  config.stripe.publishable_key = ENV['stripe_publishable_key']
+
 end
