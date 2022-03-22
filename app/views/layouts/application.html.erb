@@ -81,7 +81,7 @@
           <% end %>
         </div>
         <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton">
-          <span class="list-group-item"> <%= current_user.fname? ? current_user.fname : 'User Name' %> </span>
+          <span class="list-group-item"> <%= current_user.fname.present? ? current_user.fname : 'User Name' %> </span>
           <%= link_to 'Profile Settings', settings_path, :class => 'dropdown-item navbar-link list-group-item' %>
           <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item text-danger list-group-item'  %>
         </div>
