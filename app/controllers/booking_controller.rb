@@ -1,3 +1,4 @@
+require 'stripe'
 class BookingController < ApplicationController
   before_action :booking_params
   before_action :fetch_booking, only: %i[update destroy]
@@ -35,8 +36,13 @@ class BookingController < ApplicationController
   end
 
   def destroy
+    Stripe.api_key = ENV['stripe_api_key']
     @booking.destroy
     respond_to do |format|
+      Stripe::PaymentIntent.cancel(
+        'pi_3KgusJSF1sw7n8H41F5GXUx2',
+      )
+
       flash[:alert] = "Booking was successfully Cancelled."
       format.html { redirect_to futsals_path }
       format.json { head :no_content }

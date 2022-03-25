@@ -33,14 +33,14 @@
                 </div>
                 <% end %>
                 <label class="amount">
-
+                  <span>Amount: $<%= @futsal.price_per_hour %></span>
                 </label>
               </article>
               <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     Stripe.setPublishableKey('PUBLISHABLE_KEY');
                     data-key="<%= ENV['stripe_publishable_key'] %>"
                     data-description="A month's subscription"
-                    data-amount="100"
+                    data-amount="499999"
                     data-locale="auto">
               </script>
 
