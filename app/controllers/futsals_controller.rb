@@ -3,8 +3,12 @@ class FutsalsController < ApplicationController
 
   # GET /futsals or /futsals.json
   def index
-    @futsals = if params[:location]
-                Futsal.where(approve: true, location: ['lower(location) = ?', params[:location].downcase])
+    @futsals = if params[:name].present?
+      Futsal.where(Futsal.arel_table[:name].lower
+          .matches("%#{params[:name].downcase}%"))
+               elsif params[:location].present?
+                Futsal.where(Futsal.arel_table[:location].lower
+                    .matches("%#{params[:location].downcase}%"))
                else
                 Futsal.where(approve: true)
                end
@@ -69,6 +73,7 @@ class FutsalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def futsal_params
-      params.require(:futsal).permit(:name, :location, :image, :price_per_hour, :owner_name, :capacity, :contact_no, :bio).merge(user_id: current_user.id)
+      params.require(:futsal).permit(:name, :location, :image, :price_per_hour, :owner_name, :capacity, :contact_no,
+                                     :bio).merge(user_id: current_user.id)
     end
 end

@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction_id: MyString
+  type: 
+  state: MyString
+  amount: 1
+  khalti_user: MyString
+  merchant: MyString
+  token: MyString
+  cashback: MyString
+  product_identity: MyString
+  user_id: 1
+
+two:
+  transaction_id: MyString
+  type: 
+  state: MyString
+  amount: 1
+  khalti_user: MyString
+  merchant: MyString
+  token: MyString
+  cashback: MyString
+  product_identity: MyString
+  user_id: 1

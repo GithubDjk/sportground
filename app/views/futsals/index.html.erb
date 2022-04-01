@@ -2,9 +2,10 @@
 <div class="col col-3">
 <h1>Most Popular</h1>
 </div>
-<div class="col col-3 p-2">
+<div class="col col-6 p-2">
   <%= form_with(url: :futsals , method: :get, class: "form-inline my-2 my-lg-0") do |f| %>
   <!-- <form class="form-inline my-2 my-lg-0"> -->
+    <%= f.text_field :name, class: "form-control mr-sm-2", placeholder: "Search by Name of Futsal" %>
     <%= f.text_field :location, class: "form-control mr-sm-2", placeholder: "Search by Location" %>
     <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search by Location"> -->
     <%= f.submit "Search", class: "btn btn-outline-success my-2 my-sm-0"%>
@@ -15,11 +16,16 @@
 <hr class="featurette-divider">
 </div>
 <div class="row">
+  <% if @futsals.empty? %>
+  <div class="col col-12">  
+  <p class="text-center p-5"> No Futsal found!!</p>
+  </div>
+  <% else %>
   <% @futsals.each do |futsal| %>
   <div class="col-sm-4 my-2">
     <div class="card-group h-100">
       <div class="card">
-        <%= image_tag futsal.profile_picture_url , class: "card-img-top",style: "object-fit: cover; height: 180px;", alt: "No Image"%>
+        <%= image_tag futsal&.profile_picture_url , class: "card-img-top",style: "object-fit: cover; height: 180px;", alt: "No Image"%>
         <div class="card-body p-1">
           <h5 class="card-title"><%= futsal.name.capitalize %></h5>
           <h6 class="card-title"><%= futsal.location.capitalize %></h6>
@@ -48,6 +54,7 @@
       </div>
     </div>
   </div>
+  <% end %>
   <% end %>
 </div>
 <%= render "modal/modal_book"%>

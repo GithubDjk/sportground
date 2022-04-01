@@ -20,8 +20,9 @@
             <h3 class="mb-0"> General Info: </h3>
           </div>
           <div class="col-6 text-right">
-             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-sm btn-primary text-white mt-2" data-toggle="modal" data-target="#exampleModalCenter">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-sm btn-primary text-white mt-2 book" data-futsal-id="<%= @futsal.id%>"
+              data-toggle="modal" data-target="#exampleModalCenter">
               Book Now
             </button>
           </div>
@@ -46,19 +47,26 @@
 <%= render "modal/modal_book"%>
 
 <h3>Booked Table: <h3>
-<div class="row mb-2">
-          <ul class="list-group">
-            <% @bookings.each do |booking| %>
-            <li class="col col-12 list-group-item">
-              <%= booking.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%> To
-              <%= booking.ends_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%> </li>
-            <%end%>
-          </ul>
-</div>
-<style>
-  #futsal-background {
-    background-image: url(<%= url_for(@futsal.profile_picture_url) %>);
-    background-size: cover;
-    height: 50vh;
-  }
-</style>
+    <div class="row m-2">
+      <ul class="col-11 list-group">
+        <% @bookings.each do |booking| %>
+        <li class="list-group-item">
+          <p><%= booking.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%> To
+          <%= booking.ends_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%></p>
+          <%if booking.payment_id.present? %>
+            <!-- <%= button_to "Cancel Booking", booking, method: :delete, data: { confirm: "Are you sure?"},  class: "col-2 pull-right btn btn-danger text-white" %> -->
+            <button class="btn btn-secondary disabled"> Paid </button>
+          <% else %>
+           <%= render "layouts/khalti", {booking: booking} %>
+          <% end %>
+        </li>
+        <%end%>
+      </ul>
+    </div>
+    <style>
+      #futsal-background {
+        background-image: url(<%= url_for(@futsal.profile_picture_url) %>);
+        background-size: cover;
+        height: 50vh;
+      }
+    </style>
