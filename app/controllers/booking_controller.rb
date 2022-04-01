@@ -1,9 +1,9 @@
 class BookingController < ApplicationController
   before_action :booking_params
   before_action :fetch_booking, only: %i[update destroy]
-  
+  skip_before_action :verify_authenticity_token, only: :payment
   def index
-    @bookings = Booking.where(user_id: current_user)
+    @bookings = Booking.where(user_id: current_user).sort
   end
 
   def create
@@ -41,6 +41,11 @@ class BookingController < ApplicationController
       format.html { redirect_to futsals_path }
       format.json { head :no_content }
     end
+  end
+
+  def payment
+    response = Khalti::Verification.verify(params[:token], params[:amount])
+    Booking.find(params[:booking_id]).update(payment_id: response.dig("idx")) if response.dig("state", "name")
   end
 
   private
