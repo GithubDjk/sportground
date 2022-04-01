@@ -1,4 +1,4 @@
-<button id="payment-button" class="btn btn-success" data-bookingId="<%= booking.id%>">Pay with Khalti</button>
+<button id="payment-button<%= booking.id%>" class="btn btn-success" data-bookingId="<%= booking.id%>">Pay with Khalti</button>
 <!-- Place this where you need payment button -->
 <!-- Paste this code anywhere in you body tag -->
 <script>
@@ -50,7 +50,7 @@
     };
 
     var checkout = new KhaltiCheckout(config);
-    var btn = document.getElementById("payment-button");
+    var btn = document.getElementById("payment-button<%= booking.id %>");
     btn.onclick = function () {
     
         // minimum transaction amount must be 10, i.e 1000 in paisa.

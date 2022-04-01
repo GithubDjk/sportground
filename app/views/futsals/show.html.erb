@@ -47,18 +47,21 @@
 <%= render "modal/modal_book"%>
 
 <h3>Booked Table: <h3>
-    <div class="row m-2">
-      <ul class="col-11 list-group">
+      <ul class="list-group">
         <% @bookings.each do |booking| %>
         <li class="list-group-item">
-          <p><%= booking.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%> To
-          <%= booking.ends_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%></p>
+          <div class="row justify-content-between">
+          <div class="col col-auto"><%= booking.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%> To
+          <%= booking.ends_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%></div>
+          <div class="col col-auto d-flex align-self-end">
           <%if booking.payment_id.present? %>
-            <!-- <%= button_to "Cancel Booking", booking, method: :delete, data: { confirm: "Are you sure?"},  class: "col-2 pull-right btn btn-danger text-white" %> -->
-            <button class="btn btn-secondary disabled"> Paid </button>
+            <%= button_to "Cancel Booking", booking, method: :delete, data: { confirm: "Are you sure?"},  class: "btn btn-danger text-white" %>
+            <button class="btn btn-secondary disabled ml-4"> Paid </button>
           <% else %>
            <%= render "layouts/khalti", {booking: booking} %>
           <% end %>
+          </div>
+          </div>
         </li>
         <%end%>
       </ul>
