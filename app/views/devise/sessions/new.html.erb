@@ -1,7 +1,7 @@
 <div class="col-md-4 offset-md-4 justify-content-center text-center">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= image_tag("sportground.png", size: '240x90', alt: "logo") %>
-  <div class="field mt-5">
+  <div class="field mt-5 mb-2">
     <%= f.email_field :email, autofocus: true, autocomplete: "email",id: "login" , class: "fadeIn second form-control", placeholder: "Your Email.." %>
   </div>
   <div class="field">

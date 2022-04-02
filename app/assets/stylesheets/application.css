@@ -2,6 +2,16 @@ body {
 /* overflow-y: hidden;  */
 overflow-x: hidden; 
 }
+.collapse {
+  display: block;
+}
+
+.show{
+  display: block;
+  
+}
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
