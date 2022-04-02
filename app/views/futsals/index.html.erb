@@ -34,7 +34,6 @@
             <% if current_user&.fname&.downcase == futsal&.owner_name&.downcase %>
               <%= link_to 'Show', futsal,class: "text-dark bg-light btn btn-sm float-left" %> 
               <%= link_to 'Edit', edit_futsal_path(futsal),class: "text-primary bg-light btn btn-sm float-left .bg-transparent" %> 
-              <%= button_to 'Destroy', futsal_path(futsal), method: :delete, data: { confirm: 'Are you sure you want to delete?' ,  confirmButtonText: "Delete" }, class: "btn btn-sm text-danger m-0" %>
             <% else %>
               <%= link_to 'View More', futsal, class: "btn btn-lg btn-secondary text-white mt-2 float-left mr-2" %>
               <!-- Button trigger modal -->
