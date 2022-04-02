@@ -54,12 +54,16 @@
           <div class="col col-auto"><%= booking.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%> To
           <%= booking.ends_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%></div>
           <div class="col col-auto d-flex align-self-end">
+          <%if booking.user_id == current_user.id %>
+          <%= button_to "Cancel Booking", booking, method: :delete, data: { confirm: "Are you sure?"},  class: "btn btn-danger text-white" %>
           <%if booking.payment_id.present? %>
-            <%= button_to "Cancel Booking", booking, method: :delete, data: { confirm: "Are you sure?"},  class: "btn btn-danger text-white" %>
             <button class="btn btn-secondary disabled ml-4"> Paid </button>
           <% else %>
            <%= render "layouts/khalti", {booking: booking} %>
           <% end %>
+          <%else%>
+            <button class="btn btn-secondary disabled ml-4"> Booked </button>
+          <%end%>
           </div>
           </div>
         </li>
