@@ -18,8 +18,8 @@
       <td><%= booking.payment_id.present? ? 'Paid' : 'Not Paid' %></td>
       <td><%= booking.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%></td>
       <td><%= booking.ends_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%></td>
-      <td>  <%= button_to "Cancel Booking", booking, method: :delete, data: { confirm: "Are you sure?"},  class: "btn btn-danger text-white mt-2" %>
-      <%= render "layouts/khalti", {booking: booking} %>
+      <td> <div class="row"> <div class="col col-3"><%= button_to "Cancel Booking", booking, method: :delete, data: { confirm: "Are you sure?"},  class: "btn btn-danger text-white mt-2" %>
+     </div> <div class="col col-3 d-flex ml-4"> <%= render "layouts/khalti", {booking: booking} %> </div> </div>
   </td>
     </tr>
     <%end%>
