@@ -11,7 +11,8 @@ class BookingController < ApplicationController
 
     respond_to do |format|
       if booking.save
-        flash[:success] = "Futsal successfully Booked" 
+        FutsalBookMailer.send_booked_mail(current_user).deliver
+        flash[:success] = "Futsal successfully Booked"
         format.html { redirect_to futsals_path }
         format.json { render :show, status: :created, location: @futsal }
       else
