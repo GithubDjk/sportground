@@ -31,7 +31,7 @@
           <h6 class="card-title"><%= futsal.location.capitalize %></h6>
           <p class="card-text">Rs. <%= futsal.price_per_hour %></p>
           <div class="card-footer">
-            <% if current_user.fname.downcase == futsal.owner_name.downcase %>
+            <% if current_user&.fname&.downcase == futsal&.owner_name&.downcase %>
               <%= link_to 'Show', futsal,class: "text-dark bg-light btn btn-sm float-left" %> 
               <%= link_to 'Edit', edit_futsal_path(futsal),class: "text-primary bg-light btn btn-sm float-left .bg-transparent" %> 
               <%= button_to 'Destroy', futsal_path(futsal), method: :delete, data: { confirm: 'Are you sure you want to delete?' ,  confirmButtonText: "Delete" }, class: "btn btn-sm text-danger m-0" %>
