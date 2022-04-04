@@ -36,4 +36,9 @@ class User < ApplicationRecord
   def admin?
     role == "admin"
   end
+
+  def available_time
+    @available_time =  Booking.open_times.map {|k, v| k if v > Time.now.beginning_of_hour.
+      to_formatted_s(:time).at(0..1).to_i}.reject(&:blank?)
+  end
 end

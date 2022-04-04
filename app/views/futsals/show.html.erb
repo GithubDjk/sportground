@@ -51,8 +51,8 @@
         <% @bookings.each do |booking| %>
         <li class="list-group-item">
           <div class="row justify-content-between">
-          <div class="col col-auto"><%= booking.starts_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%> To
-          <%= booking.ends_at.localtime.strftime('%Y-%m-%d %H:%M:%S')%></div>
+          <div class="col col-auto"> <span>Date :</span><%= booking.book_date.strftime('%Y-%m-%d')%>
+            <span>Time :</span> <%= Booking.open_times.invert[booking.book_time]%></div>
           <div class="col col-auto d-flex align-self-end">
           <%if booking.user_id == current_user.id %>
           <%= button_to "Cancel Booking", booking, method: :delete, data: { confirm: "Are you sure?"},  class: "btn btn-danger text-white" %>
