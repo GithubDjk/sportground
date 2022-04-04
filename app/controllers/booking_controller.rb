@@ -1,6 +1,7 @@
 class BookingController < ApplicationController
   before_action :booking_params
   before_action :fetch_booking, only: %i[update destroy]
+  before_action :booking_exists?, only: %i[create]
   skip_before_action :verify_authenticity_token, only: :payment
   def index
     @bookings = Booking.where(user_id: current_user).sort
@@ -8,15 +9,18 @@ class BookingController < ApplicationController
 
   def create
     booking = Booking.new(booking_params)
-
     respond_to do |format|
-      if booking.save
+      if !booking_exists? && booking.save
         FutsalBookMailer.send_booked_mail(current_user).deliver
         flash[:success] = "Futsal successfully Booked"
         format.html { redirect_to futsals_path }
         format.json { render :show, status: :created, location: @futsal }
       else
-        flash[:error] = "Something went Wrong"
+        if booking_exists?
+          flash[:error] = "Booking Already made!"
+        else
+          flash[:error] = "Something went Wrong"
+        end
         format.html { redirect_to futsals_path }
       end
     end
@@ -44,6 +48,10 @@ class BookingController < ApplicationController
     end
   end
 
+  def booking_exists?
+    Booking.where(futsal_id: params[:futsal_id], book_date: params[:book_date], book_time: params[:book_time]).present?
+  end
+
   def payment
     response = Khalti::Verification.verify(params[:token], params[:amount])
     Booking.find(params[:booking_id]).update(payment_id: response.dig("idx")) if response.dig("state", "name")
@@ -58,6 +66,6 @@ class BookingController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def booking_params
-    params.permit(:id, :futsal_id, :payment_id, :starts_at, :ends_at).merge(user_id: current_user.id)
+    params.permit(:id, :futsal_id, :payment_id, :book_date, :book_time).merge(user_id: current_user.id)
   end
 end
