@@ -51,7 +51,7 @@
         <% @bookings.each do |booking| %>
         <li class="list-group-item">
           <div class="row justify-content-between">
-          <div class="col col-auto"> <span>Date :</span><%= booking.book_date.strftime('%Y-%m-%d')%>
+          <div class="col col-auto"> <span>Date :</span><%= booking&.book_date&.strftime('%Y-%m-%d')%>
             <span>Time :</span> <%= Booking.open_times.invert[booking.book_time]%></div>
           <div class="col col-auto d-flex align-self-end">
           <%if booking.user_id == current_user.id %>
