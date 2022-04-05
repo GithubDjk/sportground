@@ -29,7 +29,7 @@ class BookingController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
-        flash[:success] = "Booking was successfully updated." 
+        flash[:success] = "Booking was successfully updated."
         format.html { redirect_to futsals_path }
         format.json { render :show, status: :ok, location: @booking }
       else
@@ -66,6 +66,6 @@ class BookingController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def booking_params
-    params.permit(:id, :futsal_id, :payment_id, :book_date, :book_time).merge(user_id: current_user.id)
+    params.permit(:id, :futsal_id, :payment_id, :book_date).merge(user_id: current_user.id, book_time: Booking.open_times[params[:book_time]])
   end
 end

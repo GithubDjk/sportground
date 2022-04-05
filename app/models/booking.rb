@@ -5,5 +5,5 @@ class Booking < ApplicationRecord
 
   # validates :number_of_players, presence: true
   validates :book_date, presence: true
-  validates :book_time, presence: true
+  validates :book_time, presence: true, numericality: {greater_than: 0} , allow_nil: false
 end
