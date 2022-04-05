@@ -16,7 +16,7 @@
     <tr>
       <td><%= booking&.futsal&.name&.titleize %></td>
       <td><%= booking.payment_id.present? ? 'Paid' : 'Not Paid' %></td>
-      <td><%= booking.book_date.strftime('%Y-%m-%d')%></td>
+      <td><%= booking.book_date%></td>
       <td>  <%= Booking.open_times.invert[booking.book_time]%></td>
       <%if booking.payment_id.present? %>
         <td>

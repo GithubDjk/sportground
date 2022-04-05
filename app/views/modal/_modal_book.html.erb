@@ -23,8 +23,14 @@
           </div>
         </div>
         <div class="input-group date p-2" id="datetimepicker1" data-target-input="nearest">
-          <span class="p-1">Time : </span>
-          <%= f.select :book_time, options_for_select(current_user.available_time.present? ? current_user.available_time : "<option>No Time Available</option>".html_safe), class: "form form-group form-control" %>
+          <span class="p-1">Time : <%= @date_today%> </span>
+          <div id="now_time"> 
+          <%= f.select 'book_time', options_for_select(current_user.available_time), class: "form form-group form-control"%>
+          </div>
+
+          <div id="all_time">
+          <%= f.select 'book_time', options_for_select(Booking.open_times.keys), class: "form form-group form-control"%>          
+          </div>
           
           <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
 
@@ -45,12 +51,30 @@
 </div>
 
 <script type="text/javascript">
+
+  document.querySelector('#all_time').style.display = 'block'
+  document.querySelector('#now_time').style.display = 'none'
+
   buttons = document.querySelectorAll('.book');
   buttons.forEach(button => {
     button.addEventListener("click", function () {
       id = this.dataset.futsalId
       document.querySelector('#futsal_id').value = id
     })
+  })
+  today = new Date();
+  date = today.getFullYear()+'-'+`${'0'+(today.getMonth()+1)}`.slice(-2)+'-'+`${'0'+today.getDate()}`.slice(-2);
+  select_date = document.querySelector('#book_date');
+  select_date.addEventListener("change", function(){
+    if(this.value == date ) 
+    {
+      document.querySelector('#all_time').style.display = 'none'
+      document.querySelector('#now_time').style.display = 'block'
+    }
+    else {
+      document.querySelector('#all_time').style.display = 'block'
+      document.querySelector('#now_time').style.display = 'none'
+    }
   })
 
 </script>
